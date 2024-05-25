@@ -1,56 +1,99 @@
 body {
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f9ff;
-    background-image: url("background.svg");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-  
-  .container {
-    background-color: #e0eefa;
-    border-radius: 5px;
-    padding: 30px;
-    text-align: center;
-  }
-  
-  .title {
-    color: #247ba0;
-    font-size: 2em;
-    margin-bottom: 5px;
-  }
-  
-  .register-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .register-form label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .register-form input,
-  .register-form button {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-size: 16px;
-  }
-  
-  .register-form button {
-    background-color: #247ba0;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .register-form button:hover {
-    background-color: #17698c;
-  }
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #4F46E5, #9995e0);
+  margin: 0;
+}
+
+.main-container {
+  display: flex;
+  max-width: 900px;
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.promo-container {
+  flex: 1;
+  background: linear-gradient(180deg,  #4F46E5, #9995e0);
+  color: white;
+  padding: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.promo-title {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.promo-subtitle {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.promo-img {
+  width: 150px;
+  height: auto;
+}
+
+.register-container {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.regiaster-container h2 {
+  font-size: 2em;
+  margin-bottom: 50px;
+  margin-right: 250px;
+}
+
+.register-form {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: flex-start; /* Menempatkan elemen-elemen form di sebelah kiri */
+}
+
+.register-form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.register-form input,
+.register-form button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  font-size: 16px;
+}
+
+.register-form button {
+  background-color: #4F46E5;
+  color: white;
+  cursor: pointer;
+}
+
+
+.register-form a {
+  color: #247ba0;
+}
+
+.register-form a:hover {
+  text-decoration: underline;
+}
