@@ -68,9 +68,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="title">CodeWizard</h1>
-        <form class="register-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <div class="main-container">
+    <div class="promo-container">
+            <h1 class="promo-title">CodeWizard</h1>
+            <p class="promo-subtitle">Elevate Your Code Skills with CodeWizard ✨<br>Empower Your Journey, Transform Your Future</p>
+            <img src="rocket.svg" alt="Rocket Image" class="promo-img">
+        </div>
+        <div class="register-container">
+            <h2>Sign In</h2>
+            <form class="register-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <?php if (!empty($regist)) {
                 echo "<p style='color:red;'>$regist</p>";
             } ?>
@@ -81,6 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">Register</button>
         </form>
         <p>Already have an account? <a href="login.php">Login here</a>.</p>
+    </div>
     </div>
 </body>
 
