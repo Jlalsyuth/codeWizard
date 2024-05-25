@@ -71,6 +71,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="login-container">
             <h2>Log In</h2>
             <form class="login-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <?php if (isset($login_error)) {
+                    echo "<p style='color:red;'>$login_error</p>";
+                } ?>
                 <label for="username">Email</label>
                 <input type="text" id="username" name="username" placeholder="Enter your email" required>
                 <label for="password">Password</label>
