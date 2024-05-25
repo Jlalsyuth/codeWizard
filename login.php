@@ -55,12 +55,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodeWizard Login</title>
     <link rel="stylesheet" href="login.css">
 </head>
+
 <body>
     <div class="main-container">
         <div class="promo-container">
@@ -71,17 +73,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="login-container">
             <h2>Log In</h2>
             <form class="login-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                <?php if (isset($login_error)) {
-                    echo "<p style='color:red;'>$login_error</p>";
-                } ?>
+                <div class="error-message">
+                    <?php if (isset($login_error)) {
+                        echo $login_error;
+                    } ?>
+                </div>
                 <label for="username">Email</label>
                 <input type="text" id="username" name="username" placeholder="Enter your email" required>
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                    <button type="submit" class="login-btn">Login</button>
+                <button type="submit" class="login-btn">Login</button>
             </form>
             <p>Don't have an account? <a href="register.php">Sign Up</a></p>
         </div>
     </div>
 </body>
+
 </html>
