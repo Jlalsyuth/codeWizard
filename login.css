@@ -4,34 +4,71 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f0f9ff;
-  background-image: url("background.svg");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+  background: linear-gradient(180deg, #4F46E5, #9995e0);
+  margin: 0;
 }
 
-.container {
-  background-color: #e0eefa;
-  border-radius: 5px;
-  padding: 30px;
+.main-container {
+  display: flex;
+  max-width: 900px;
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.promo-container {
+  flex: 1;
+  background: linear-gradient(180deg,  #4F46E5, #9995e0);
+  color: white;
+  padding: 40px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.title {
-  color: #247ba0;
+.promo-title {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.promo-subtitle {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.promo-img {
+  width: 150px;
+  height: auto;
+}
+
+.login-container {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container h2 {
   font-size: 2em;
   margin-bottom: 20px;
 }
 
 .login-form {
+  width: 100%;
+  max-width: 300px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  justify-content: flex-start; /* Menempatkan elemen-elemen form di sebelah kiri */
 }
 
 .login-form label {
-  display: block;
   font-weight: bold;
   margin-bottom: 5px;
 }
@@ -47,10 +84,36 @@ body {
 
 .login-form button {
   background-color: #247ba0;
-  color: #fff;
+  color: white;
   cursor: pointer;
 }
 
 .login-form button:hover {
   background-color: #17698c;
+}
+
+.forgot-password-btn {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #247ba0;
+  border-radius: 3px;
+  background: none;
+  color: #247ba0;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 0; /* Menghapus margin atas */
+  margin-right: auto; /* Menempatkan tombol ke sebelah kiri */
+}
+
+.forgot-password-btn:hover {
+  background-color: #247ba0;
+  color: white;
+}
+
+.login-form a {
+  color: #247ba0;
+}
+
+.login-form a:hover {
+  text-decoration: underline;
 }
