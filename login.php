@@ -56,31 +56,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodeWizard Login</title>
     <link rel="stylesheet" href="login.css">
-</head>
+    <style>
+        /* CSS untuk menggeser tombol forgot password */
+        .login-form {
+            justify-content: flex-start;
+        }
 
+        .login-btn {
+            margin-top: 0;
+        }
+
+        .forgot-password-btn {
+            margin-top: 10px;
+            margin-right: auto;
+        }
+    </style>
+</head>
 <body>
-    <div class="container">
-        <h1 class="title">CodeWizard</h1>
-        <form class="login-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <?php if (isset($login_error)) {
-                echo "<p style='color:red;'>$login_error</p>";
-            } ?>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username" required="required">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required="required">
-            <button type="submit">Login</button>
-        </form>
-        <?php if (isset($login_error)) { ?>
-            <p><?php echo $login_error; ?></p>
-        <?php } ?>
-        <p>Don't have an account? <a href="register.php">Register here</a>.</p>
+    <div class="main-container">
+        <div class="promo-container">
+            <h1 class="promo-title">CodeWizard</h1>
+            <p class="promo-subtitle">Elevate Your Code Skills with CodeWizard ✨<br>Empower Your Journey, Transform Your Future</p>
+            <img src="rocket.svg" alt="Rocket Image" class="promo-img">
+        </div>
+        <div class="login-container">
+            <h2>Log In</h2>
+            <form class="login-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <label for="username">Email</label>
+                <input type="text" id="username" name="username" placeholder="Enter your email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <div class="pisah">
+                    <button type="submit" class="login-btn">Login</button>
+                    <button type="button" class="forgot-password-btn" onclick="window.location.href='forgotpassword.php'">Forgot password?</button>
+                </div>
+            </form>
+            <p>Don't have an account? <a href="register.php">Sign Up</a></p>
+        </div>
     </div>
 </body>
-
 </html>
