@@ -55,29 +55,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodeWizard Login</title>
     <link rel="stylesheet" href="login.css">
-    <style>
-        /* CSS untuk menggeser tombol forgot password */
-        .login-form {
-            justify-content: flex-start;
-        }
-
-        .login-btn {
-            margin-top: 0;
-        }
-
-        .forgot-password-btn {
-            margin-top: 10px;
-            margin-right: auto;
-        }
-    </style>
 </head>
 <body>
     <div class="main-container">
@@ -93,10 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="text" id="username" name="username" placeholder="Enter your email" required>
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                <div class="pisah">
                     <button type="submit" class="login-btn">Login</button>
-                    <button type="button" class="forgot-password-btn" onclick="window.location.href='forgotpassword.php'">Forgot password?</button>
-                </div>
             </form>
             <p>Don't have an account? <a href="register.php">Sign Up</a></p>
         </div>
