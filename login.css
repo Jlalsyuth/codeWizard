@@ -56,7 +56,8 @@ body {
 
 .login-container h2 {
   font-size: 2em;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  margin-right: 250px;
 }
 
 .login-form {
@@ -78,37 +79,16 @@ body {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 15px;
   font-size: 16px;
 }
 
 .login-form button {
-  background-color: #247ba0;
+  background-color: #4F46E5;
   color: white;
   cursor: pointer;
 }
 
-.login-form button:hover {
-  background-color: #17698c;
-}
-
-.forgot-password-btn {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #247ba0;
-  border-radius: 3px;
-  background: none;
-  color: #247ba0;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 0; /* Menghapus margin atas */
-  margin-right: auto; /* Menempatkan tombol ke sebelah kiri */
-}
-
-.forgot-password-btn:hover {
-  background-color: #247ba0;
-  color: white;
-}
 
 .login-form a {
   color: #247ba0;
