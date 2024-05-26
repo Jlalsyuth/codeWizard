@@ -175,6 +175,10 @@ $koneksi->close();
                                 <li><a href="#">SQL</a></li>
                             </ul>
                         </li>
+                        <?php if ($_SESSION['role'] == 'admin') { ?>
+                            <li><a href="kelolaAkun.php" class="kelola-btn">Kelola <br>Akun</a></li>
+                            <li><a href="kelolaMateri.php" class="kelola-btn">Kelola Materi</a></li>
+                        <?php } ?>
                     </ul>
                 </nav>
             </div>
