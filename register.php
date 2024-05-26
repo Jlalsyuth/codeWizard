@@ -3,8 +3,8 @@
 function koneksi_db()
 {
     $server = "localhost";
-    $username = "root";
-    $password = "fiki12345";
+    $username = "admin";
+    $password = "codewizard123";
     $db_nama = "lk02";
 
     $koneksi = new mysqli($server, $username, $password, $db_nama);
@@ -16,16 +16,16 @@ function koneksi_db()
     return $koneksi;
 }
 
-function add($new_username, $new_password)
+function add($new_username, $new_email, $new_password)
 {
     $koneksi = koneksi_db();
 
     try {
-        $stmt = $koneksi->prepare("INSERT INTO akun (username, password) VALUES (?, ?)");
+        $stmt = $koneksi->prepare("INSERT INTO akun (username, email, password) VALUES (?, ?, ?)");
         if ($stmt === false) {
             throw new Exception('Statement preparation failed: ' . htmlspecialchars($koneksi->error));
         }
-        $stmt->bind_param("ss", $new_username, $new_password);
+        $stmt->bind_param("sss", $new_username, $new_email, $new_password);
         $stmt->execute();
         $stmt->close();
         $koneksi->close();
@@ -33,7 +33,7 @@ function add($new_username, $new_password)
     } catch (mysqli_sql_exception $e) {
         if ($e->getCode() == 1062) {
             // Duplicate entry error code
-            return "Username sudah ada. Silakan pilih yang lain.";
+            return "Username atau email sudah ada. Silakan pilih yang lain.";
         } else {
             return "Gagal mendaftar. Silakan coba lagi nanti.";
         }
@@ -46,13 +46,20 @@ $regist = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_username = $_POST["new_username"];
+    $new_email = $_POST["new_email"];
     $new_password = $_POST["new_password"];
 
-    $result = add($new_username, $new_password);
-    if ($result === true) {
-        $regist = "Registrasi berhasil. Anda sekarang dapat login dengan akun baru Anda.";
+    if (empty($new_username) || empty($new_email) || empty($new_password)) {
+        $regist = "Semua data harus diisi.";
+    } elseif (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
+        $regist = "Format email tidak valid.";
     } else {
-        $regist = $result;
+        $result = add($new_username, $new_email, $new_password);
+        if ($result === true) {
+            $regist = "Registrasi berhasil. Anda sekarang dapat login dengan akun baru Anda.";
+        } else {
+            $regist = $result;
+        }
     }
 }
 ?>
@@ -69,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <div class="main-container">
-    <div class="promo-container">
+        <div class="promo-container">
             <h1 class="promo-title">CodeWizard</h1>
             <p class="promo-subtitle">Elevate Your Code Skills with CodeWizard ✨<br>Empower Your Journey, Transform Your Future</p>
             <img src="rocket.svg" alt="Rocket Image" class="promo-img">
@@ -77,17 +84,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="register-container">
             <h2>Sign In</h2>
             <form class="register-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <?php if (!empty($regist)) {
-                echo "<p style='color:red;'>$regist</p>";
-            } ?>
-            <label for="new_username">New Username</label>
-            <input type="text" id="new_username" name="new_username" placeholder="Enter new username" required="required">
-            <label for="new_password">New Password</label>
-            <input type="password" id="new_password" name="new_password" placeholder="Enter new password" required="required">
-            <button type="submit">Register</button>
-        </form>
-        <p>Already have an account? <a href="login.php">Login here</a>.</p>
-    </div>
+                <div class="error-message">
+                    <?php if (!empty($regist)) {
+                        echo $regist;
+                    } ?>
+                </div>
+                <label for="new_username">New Username</label>
+                <input type="text" id="new_username" name="new_username" placeholder="Enter new username">
+                <label for="new_email">Email</label>
+                <input type="email" id="new_email" name="new_email" placeholder="Enter your email">
+                <label for="new_password">New Password</label>
+                <input type="password" id="new_password" name="new_password" placeholder="Enter new password">
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="login.php">Login here</a>.</p>
+        </div>
     </div>
 </body>
 
