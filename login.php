@@ -26,31 +26,48 @@ function validasi($username, $password)
 {
     $koneksi = koneksi_db();
 
-    $query = "SELECT * FROM akun WHERE username = '$username' AND password = '$password'";
-    $validasi = $koneksi->query($query);
+    $query = "SELECT role FROM akun WHERE username = '$username' AND password = '$password'";
+    $result = $koneksi->query($query);
 
-    if ($validasi->num_rows > 0) {
+    if ($result->num_rows == 1) {
+        $data = $result->fetch_assoc();
+        $role = $data['role'];
         $koneksi->close();
-        return true;
+        return $role; // Mengembalikan peran (role) dari pengguna
     } else {
         $koneksi->close();
         return false;
     }
 }
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if (validasi($username, $password)) {
-        $_SESSION["username"] = $username;
-        header("Location: dashboard.php");
-        exit();
+    if (empty($username) || empty($password)) {
+        $login_error = "Username dan password harus diisi.";
     } else {
-        $login_error = "Invalid username or password";
+        $role = validasi($username, $password); // Mendapatkan peran (role) pengguna
+
+        if ($role === false) {
+            $login_error = "Invalid username or password";
+        } else {
+            $_SESSION["username"] = $username;
+            $_SESSION["role"] = $role; // Menyimpan peran (role) pengguna dalam sesi
+
+            if ($role === 'user') {
+                header("Location: dashboard.php"); // Jika peran (role) adalah admin, arahkan ke dashboard.php
+            } elseif ($role === 'admin') {
+                header("Location: dashboard.php"); // Jika peran (role) adalah user, arahkan ke dashboard.php
+            }
+            exit();
+        }
     }
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -76,12 +93,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="error-message">
                     <?php if (isset($login_error)) {
                         echo $login_error;
-                    } ?>
+                    }
+                    ?>
                 </div>
-                <label for="username">Email</label>
-                <input type="text" id="username" name="username" placeholder="Enter your email" required>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
                 <button type="submit" class="login-btn">Login</button>
             </form>
             <p>Don't have an account? <a href="register.php">Sign Up</a></p>
