@@ -56,8 +56,7 @@ body {
 
 .login-container h2 {
   font-size: 2em;
-  margin-bottom: 20px;
-  margin-right: 250px;
+  margin:auto;
 }
 
 .login-form {
@@ -102,7 +101,5 @@ body {
 .error-message {
   color: red;
   height: 20px;
-  /* Fixed height for the error message */
-  margin-bottom: 15px;
-  /* Margin to create space between elements */
+  margin:auto;
 }
