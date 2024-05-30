@@ -33,6 +33,22 @@ if ($result_html->num_rows > 0) {
 } else {
     $materi_html = "Learn programming with tutorials, references, and examples for various languages and web tech";
 }
+
+$username = $_SESSION['username'];
+$query = "SELECT * FROM akun WHERE username='$username'";
+$result = $koneksi->query($query);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $foto = ""; // Gambar default jika tidak ada foto
+
+    if ($row['foto'] != "") {
+        $foto = $row['foto'];
+    }
+} else {
+    echo "Data pengguna tidak ditemukan.";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -124,7 +140,7 @@ if ($result_html->num_rows > 0) {
     <div class="action">
 
         <div class="profile" onclick="menuToggle();">
-            <img src="uploads/avatar.jpg" />
+            <img src="uploads/<?php echo $foto; ?>" alt="foto" class="avatar">
         </div>
         <div class="menu">
             <h3><span>Hello! </span><?php echo $_SESSION['username']; ?></h3>
