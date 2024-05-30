@@ -20,7 +20,7 @@ body {
 
 .promo-container {
   flex: 1;
-  background: linear-gradient(180deg,  #4F46E5, #9995e0);
+  background: linear-gradient(180deg, #4F46E5, #9995e0);
   color: white;
   padding: 40px;
   text-align: center;
@@ -54,10 +54,10 @@ body {
   align-items: center;
 }
 
-.regiaster-container h2 {
+.register-container h2 {
   font-size: 2em;
-  margin-bottom: 50px;
-  margin-right: 250px;
+  margin: auto;
+  margin-bottom: 20px;
 }
 
 .register-form {
@@ -66,7 +66,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  justify-content: flex-start; /* Menempatkan elemen-elemen form di sebelah kiri */
+  justify-content: flex-start;
+  /* Menempatkan elemen-elemen form di sebelah kiri */
 }
 
 .register-form label {
@@ -96,4 +97,12 @@ body {
 
 .register-form a:hover {
   text-decoration: underline;
+}
+
+.error-message {
+  color: red;
+  height: 20px;
+  margin: auto;
+  margin-bottom: 20px;
+  text-align: center;
 }
