@@ -104,6 +104,20 @@ if ($result_sql->num_rows > 0) {
 } else {
     $materi_sql = "Learn programming with tutorials, references, and examples for various languages and web tech";
 }
+$username = $_SESSION['username'];
+$query = "SELECT * FROM akun WHERE username='$username'";
+$result = $koneksi->query($query);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $foto = ""; // Gambar default jika tidak ada foto
+
+    if ($row['foto'] != "") {
+        $foto = $row['foto'];
+    }
+} else {
+    echo "Data pengguna tidak ditemukan.";
+}
 
 $koneksi->close();
 ?>
@@ -176,7 +190,7 @@ $koneksi->close();
                             </ul>
                         </li>
                         <?php if ($_SESSION['role'] == 'admin') { ?>
-                            <li><a href="kelolaAkun.php" class="kelola-btn">Kelola <br>Akun</a></li>
+                            <li><a href="kelolaAkun.php" class="kelola-btn">Kelola Akun</a></li>
                             <li><a href="kelolaMateri.php" class="kelola-btn">Kelola Materi</a></li>
                         <?php } ?>
                     </ul>
@@ -199,7 +213,7 @@ $koneksi->close();
     <div class="action">
 
         <div class="profile" onclick="menuToggle();">
-            <img src="uploads/avatar.jpg" />
+            <img src="uploads/<?php echo $foto; ?>" alt="foto" class="avatar">
         </div>
         <div class="menu">
             <h3><span>Hello! </span><?php echo $_SESSION['username']; ?></h3>
