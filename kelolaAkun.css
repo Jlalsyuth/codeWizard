@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* Warna biru muda untuk latar belakang */
+    color: #333; /* Warna teks utama */
+}
+
+h1, h2, h3 {
+    color: #0047ab; /* Warna biru tua untuk judul */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #0047ab; /* Warna garis untuk tabel */
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #0047ab; /* Warna biru tua untuk header tabel */
+    color: #fff; /* Warna teks putih untuk header tabel */
+}
+
+a {
+    color: #0066cc; /* Warna biru muda untuk tautan */
+}
+
+a:hover {
+    color: #003d99; /* Warna biru tua saat tautan dihover */
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    padding: 8px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+.button-group {
+    display: flex;
+    padding: 20px;
+    gap: 60px;
+}
+
+.btn-logout{
+    padding: 8px 20px;
+    background-color: red;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 5px;
+    &:hover {
+        scale: 1.2;
+        background-color: rgb(169, 11, 11);
+    }
+}
+
+
+
+.btn-kelola{
+    padding: 8px 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 5px;
+    &:hover {
+        scale: 1.2;
+        background-color: #45a049;
+    }
+}
+
+
+.btn-primary{
+    padding: 8px 20px;
+    background-color: #0047ab; /* Warna biru tua untuk tombol */
+    color: #fff; /* Warna teks putih untuk tombol */
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 5px;
+    &:hover {
+        scale: 1.2;
+        background-color: #003d99;
+    }
+}
