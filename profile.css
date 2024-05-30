@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'inter';
     margin: 0;
     padding: 0;
     background: linear-gradient(135deg, #4d4ddb, #8a4de6);
@@ -40,28 +40,60 @@ body {
     border: 2px solid #fff;
 }
 
+.button-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 .edit-btn {
     padding: 10px 20px;
     background-color: #5a5aff;
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: 0.5s;
+    &:hover {
+        scale: 1.2;
+    }
 }
 
-.edit-btn:hover {
+.edit-btn:last-child {
+    margin-right: -50px;
+}
+
+.button-container:has(.edit-btn:hover) .edit-btn:not(:hover){
     background-color: #4545ff;
+    scale: 0.8;
+    opacity: 0.8;
+    filter: blur(4px);
 }
 
 .profile-info p {
     margin: 10px 0;
     font-size: 18px;
-}
-
-.profile-info p strong {
-    color: #fff;
+    color: white;
 }
 
 .profile-info p:last-child {
     margin-bottom: 0;
+}
+
+button {
+    background-color: #5a5aff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+button:hover {
+    transform: scale(0.8);
+    background-color: green;
+}
+
+button.hide-button {
+    background-color: red;
 }
